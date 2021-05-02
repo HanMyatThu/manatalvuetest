@@ -1,0 +1,385 @@
+<template>
+  <v-container class="mt-10">
+    <v-row no-gutters>
+      <v-col sm="5" md="6">
+        <h2>Head Titles</h2>
+      </v-col>
+      <v-col sm="5" offset-sm="2" md="6" offset-md="0" class="text-right">
+        <Button />
+      </v-col>
+    </v-row>
+    <Articles :articles="articles" />
+  </v-container>
+</template>
+
+<script>
+import Button from '../components/utils/Button';
+import Articles from '../components/articles/Articles';
+
+export default {
+  name: 'Home',
+  components: {
+    Button,
+    Articles,
+  },
+  data() {
+    return {
+      articles: [],
+    };
+  },
+  created() {
+    this.articles = [
+      {
+        source: {
+          id: 'bleacher-report',
+          name: 'Bleacher Report',
+        },
+        author: 'Alex Ballentine',
+        title:
+          "NFL Draft 2021: Reviewing This Year's Biggest Steals, Reaches and Surprises - Bleacher Report",
+        description:
+          "Steals, surprises and reaches are what drives the intrigue of the NFL draft.   If everything went according to consensus, the draft wouldn't be the most-watched offseason event in all of sports...",
+        url:
+          'https://bleacherreport.com/articles/2942304-nfl-draft-2021-reviewing-this-years-biggest-steals-reaches-and-surprises',
+        urlToImage:
+          'https://img.bleacherreport.net/img/images/photos/003/912/265/76465bf9970341940e0602cc9398be03_crop_exact.jpg?w=1200&h=1200&q=75',
+        publishedAt: '2021-05-02T13:00:03Z',
+        content:
+          "Brian Blanco/Associated Press\r\nThis isn't anything against Travis Etienne. The running back is a true home run threat and put together an excellent career at Clemson.\r\nBut using a first-round pick on… [+1616 chars]",
+      },
+      {
+        source: {
+          id: null,
+          name: 'Benzinga',
+        },
+        author: null,
+        title:
+          "Could Elon Musk's 'SNL' Hosting Cause A Bump In Tesla Or Dogecoin? - Benzinga",
+        description:
+          'An appearance by the executive of a publicly-traded company on CNBC or another business-related news channel can sometimes move the share price fas...',
+        url:
+          'https://www.benzinga.com/markets/cryptocurrency/21/05/20827000/could-elon-musks-snl-hosting-cause-a-bump-in-tesla-or-dogecoin',
+        urlToImage:
+          'https://cdn2.benzinga.com/files/imagecache/og_image_social_share_1200x630/images/story/2012/musk_13.jpg?width=720',
+        publishedAt: '2021-05-02T12:58:00Z',
+        content:
+          'An appearance by the executive of a publicly-traded company on CNBC or another business-related news channel can sometimes move the share price fast. If the show airs outside the trading hours, it ca… [+2145 chars]',
+      },
+      {
+        source: {
+          id: 'nbc-news',
+          name: 'NBC News',
+        },
+        author: 'Yuliya Talmazan, Stella Kim',
+        title:
+          "North Korea warns of 'very grave situation' after Biden called it a security threat - NBC News",
+        description:
+          'North Korea warned of a "very grave situation" after President Joe Biden called the country a security threat. It said the U.S. leader made a "big blunder."',
+        url:
+          'https://www.nbcnews.com/news/world/north-korea-warns-very-grave-situation-after-biden-called-it-n1266072',
+        urlToImage:
+          'https://media4.s-nbcnews.com/j/newscms/2021_17/3469543/south_korea_north_korea_us_29109-jpg-0aa3a_6b5e8b62182942338000d0a6b3cfb7b9.nbcnews-fp-1200-630.jpg',
+        publishedAt: '2021-05-02T12:23:00Z',
+        content:
+          'The U.S. will face "a very grave situation" because President Joe Biden called North Korea a serious threat, a senior foreign ministry official in the secretive communist state said Sunday.\r\nBiden ma… [+3268 chars]',
+      },
+      {
+        source: {
+          id: 'cnn',
+          name: 'CNN',
+        },
+        author: 'Daniel Dale, CNN',
+        title:
+          "What it's been like fact-checking Joe Biden through 100 days - CNN ",
+        description:
+          'Things have been quieter around here in presidential-fact-check land.',
+        url:
+          'https://www.cnn.com/2021/05/02/politics/fact-check-biden-100-days/index.html',
+        urlToImage:
+          'https://cdn.cnn.com/cnnnext/dam/assets/210430154611-01-biden-amtrak-0430-super-tease.jpg',
+        publishedAt: '2021-05-02T12:06:00Z',
+        content: null,
+      },
+      {
+        source: {
+          id: 'bloomberg',
+          name: 'Bloomberg',
+        },
+        author: null,
+        title:
+          'Rich Americans Fleeing Tax Hikes May Turbocharge Shift to ETFs - Bloomberg',
+        description: null,
+        url:
+          'https://www.bloomberg.com/tosv2.html?vid=&uuid=7152efd0-ab56-11eb-b7c9-35e610118f4c&url=L25ld3MvYXJ0aWNsZXMvMjAyMS0wNS0wMi9yaWNoLWFtZXJpY2Fucy1mbGVlaW5nLXRheC1oaWtlcy1tYXktdHVyYm9jaGFyZ2Utc2hpZnQtdG8tZXRmcw==',
+        urlToImage: null,
+        publishedAt: '2021-05-02T12:00:00Z',
+        content:
+          "To continue, please click the box below to let us know you're not a robot.",
+      },
+      {
+        source: {
+          id: null,
+          name: 'Yahoo Entertainment',
+        },
+        author: 'Alexis Keenan',
+        title:
+          "Buffett on whether he'd insure SpaceX mission: I'd have a 'different rate if Elon was on board' - Yahoo Finance",
+        description:
+          'Berkshire Hathaway CEO Warren Buffett has a message about the insurability of Elon Musk’s future SpaceX missions.',
+        url:
+          'https://finance.yahoo.com/news/warren-buffett-writing-insurance-policy-for-elon-musk-115958283.html',
+        urlToImage:
+          'https://s.yimg.com/ny/api/res/1.2/.mforStgN81_vm_pNjrfkg--/YXBwaWQ9aGlnaGxhbmRlcjt3PTIwMDA7aD0xMzMz/https://s.yimg.com/os/creatr-uploaded-images/2021-05/479ff7b0-aac4-11eb-bfff-213cddd34731',
+        publishedAt: '2021-05-02T11:59:58Z',
+        content:
+          'Berkshire Hathaway (BRK-A, BRK-B) CEO Warren Buffett has a message about the insurability of Elon Musks future SpaceX missions. It would depend on the premium, the Oracle of Omaha joked Saturday duri… [+3332 chars]',
+      },
+      {
+        source: {
+          id: null,
+          name: 'Madison.com',
+        },
+        author: 'JASON WILDE For the State Journal',
+        title:
+          'As rift widens between Aaron Rodgers and Packers, head coach Matt LaFleur keeps hope alive for reconciliation - Madison.com',
+        description:
+          'On a day that Yahoo! Sports reported that Aaron Rodgers has told the team that he won’t return as long as Brian Gutekunst is the general manager, and team president/CEO',
+        url:
+          'https://madison.com/wsj/sports/football/professional/as-rift-widens-between-aaron-rodgers-and-packers-head-coach-matt-lafleur-keeps-hope-alive/article_0135d073-7aac-55f0-bffb-0c1ed30dc80e.html',
+        urlToImage:
+          'https://bloximages.chicago2.vip.townnews.com/madison.com/content/tncms/assets/v3/editorial/0/13/0135d073-7aac-55f0-bffb-0c1ed30dc80e/608e801a87fc0.preview.jpg?crop=1763%2C992%2C0%2C91&resize=1120%2C630&order=crop%2Cresize',
+        publishedAt: '2021-05-02T11:45:00Z',
+        content:
+          'Asked what hell do if Rodgers remains steadfast in his vow not to come back, LaFleur replied, I cant even take my brain to that spot right now. I just want to do everything in my power to ensure that… [+1312 chars]',
+      },
+      {
+        source: {
+          id: 'google-news',
+          name: 'Google News',
+        },
+        author: null,
+        title:
+          'Nasa astronauts make first night landing in 53 years in SpaceX capsule - BBC News - BBC News',
+        description: null,
+        url:
+          'https://news.google.com/__i/rss/rd/articles/CBMiK2h0dHBzOi8vd3d3LnlvdXR1YmUuY29tL3dhdGNoP3Y9bEdLNU5CQUkyRTDSAQA?oc=5',
+        urlToImage: null,
+        publishedAt: '2021-05-02T11:34:00Z',
+        content: null,
+      },
+      {
+        source: {
+          id: 'the-washington-post',
+          name: 'The Washington Post',
+        },
+        author: 'Steve Hendrix',
+        title:
+          'Israel asks whether autonomy of the ultra-Orthodox contributed to the deadly stampede - The Washington Post',
+        description:
+          'As officials identified the last of the 45 dead, broader questions have arisen about Haredi self-segregation and the politicians who enable it.',
+        url:
+          'https://www.washingtonpost.com/world/middle_east/israel-stampede-deaths-ultra-orthodox/2021/05/02/6144991a-aa96-11eb-a8a7-5f45ddcdf364_story.html',
+        urlToImage:
+          'https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/GNHD4CVLHEI6XK2MTBSVLIOFCE.jpg&w=1440',
+        publishedAt: '2021-05-02T11:28:00Z',
+        content:
+          'Now, this shocked country is asking whether that self-segregation and the secular politicians who have enabled it for decades is responsible for the worst civilian catastrophe in Israels history, the… [+7875 chars]',
+      },
+      {
+        source: {
+          id: 'politico',
+          name: 'Politico',
+        },
+        author: 'Marc Caputo',
+        title:
+          '‘There’s a lot of crazy going on’: Pro-Trump lawyer blows up key GOP race - POLITICO',
+        description:
+          'Lin Wood’s smash-mouth bid to become South Carolina party chair is rattling one of the Republican Party’s most important states.',
+        url:
+          'https://www.politico.com/news/2021/05/02/lin-wood-south-carolina-race-485189',
+        urlToImage:
+          'https://static.politico.com/f9/fe/de3ac1aa4f4d9e72d1fad1b7e8c0/ap20337836130489-1.jpg',
+        publishedAt: '2021-05-02T11:00:19Z',
+        content:
+          'Trump has already endorsed McKissick, who went so far as to cancel the 2020 presidential primary in the state when the president ran for reelection. But in Woods telling, it was he who carried the tr… [+6630 chars]',
+      },
+      {
+        source: {
+          id: 'associated-press',
+          name: 'Associated Press',
+        },
+        author: null,
+        title:
+          'Dozens of German police injured in May Day riots - The Associated Press',
+        description:
+          "BERLIN (AP) — At least 93 police officers were injured and 354 protesters were detained after traditional May Day rallies in Berlin turned violent, Berlin's top security official said Sunday. More than 20 different rallies took place in the German capital on …",
+        url:
+          'https://apnews.com/article/berlin-europe-riots-police-government-and-politics-1a002746742bd64a805030adf4843098',
+        urlToImage:
+          'https://storage.googleapis.com/afs-prod/media/a3b9b0821c5c42ddb11b597701f15dad/3000.jpeg',
+        publishedAt: '2021-05-02T10:57:26Z',
+        content:
+          'BERLIN (AP) At least 93 police officers were injured and 354 protesters were detained after traditional May Day rallies in Berlin turned violent, Berlins top security official said Sunday.\r\nMore than… [+1004 chars]',
+      },
+      {
+        source: {
+          id: 'cbs-news',
+          name: 'CBS News',
+        },
+        author: 'Grace Segers',
+        title:
+          'Manchin opposes D.C. statehood bill, likely dooming its prospects in the Senate - CBS News',
+        description:
+          'The moderate Democrat said Friday he believes D.C. statehood should be addressed with a constitutional amendment.',
+        url:
+          'https://www.cbsnews.com/news/machin-washington-dc-statehood-bill/',
+        urlToImage:
+          'https://cbsnews3.cbsistatic.com/hub/i/r/2021/05/01/43061098-bcc8-4e6b-8de3-8206bf0d5492/thumbnail/1200x630/12e20a5c6f8912c9bd92d716e846be0d/manchin.jpg',
+        publishedAt: '2021-05-02T10:54:34Z',
+        content:
+          "Democratic Senator Joe Manchin said Friday he does not support a bill to make Washington, D.C. the 51st state, likely dooming the measure's chances in the Senate. Manchin argued that D.C. statehood s… [+3687 chars]",
+      },
+      {
+        source: {
+          id: 'cbs-news',
+          name: 'CBS News',
+        },
+        author: null,
+        title:
+          'More than 101 million Americans are fully vaccinated against COVID-19, CDC says - CBS News',
+        description:
+          'Over 43% have received at least one dose, and the average daily case count is down 16%.',
+        url: 'https://www.cbsnews.com/news/covid-vaccine-full-101-million/',
+        urlToImage:
+          'https://cbsnews2.cbsistatic.com/hub/i/r/2021/05/01/3df35b47-3905-4dea-9339-3850ee98a54d/thumbnail/1200x630g2/3745e6530ccbdff987291e293b92f0d3/gettyimages-1232610818.jpg',
+        publishedAt: '2021-05-02T10:53:24Z',
+        content:
+          'The number of Americans fully vaccinated against COVID-19 now tops 101 million, according to the Centers for Disease Control and Prevention. More than 43% have received at least one dose, and the ave… [+1685 chars]',
+      },
+      {
+        source: {
+          id: 'cbs-news',
+          name: 'CBS News',
+        },
+        author: 'Jordan Freiman',
+        title: 'Medina Spirit wins 147th Kentucky Derby - CBS News',
+        description:
+          'The derby resumed its traditional place on the first Saturday in May this year after the coronavirus pandemic​ threw the horse racing schedule into chaos in 2020.',
+        url:
+          'https://www.cbsnews.com/news/medina-spirit-kentucky-derby-2021-winner/',
+        urlToImage:
+          'https://cbsnews3.cbsistatic.com/hub/i/r/2021/05/02/00531dea-fd14-40b3-bc86-b957663048ca/thumbnail/1200x630/288ec00b6987694ed701be0eb3c10298/gettyimages-1315729010.jpg',
+        publishedAt: '2021-05-02T10:47:55Z',
+        content:
+          'Medina Spirit has won the 147th running of the Kentucky Derby, kicking off the 2021 race for the Triple Crown. Medina Spirit, ridden by jockey John R. Velazquez, came into the race at 12-1 odds.\r\nTra… [+1785 chars]',
+      },
+      {
+        source: {
+          id: 'fox-news',
+          name: 'Fox News',
+        },
+        author: 'Edmund DeMarche',
+        title:
+          'Tennessee deck collapse: At least 11 injured, critically - Fox News',
+        description:
+          'A deck collapsed at a restaurant in Tennessee on Saturday, resulting in 11 people being hospitalized, including two with critical injuries, reports said.',
+        url:
+          'https://www.foxnews.com/us/tennessee-deck-collapse-at-least-11-injured-critically',
+        urlToImage:
+          'https://static.foxnews.com/foxnews.com/content/uploads/2021/05/NOF675VGRVERPDUYZW2UC2WHWU.jpg',
+        publishedAt: '2021-05-02T09:48:07Z',
+        content:
+          'A deck collapsed at a restaurant in Tennessee on Saturday, resulting in 11 people being hospitalized, including two with critical injuries, reports said.\r\nAmy Maxwell, who is part of the Hamilton Cou… [+635 chars]',
+      },
+      {
+        source: {
+          id: 'the-wall-street-journal',
+          name: 'The Wall Street Journal',
+        },
+        author: 'Gunjan Banerji',
+        title:
+          'Americans Can’t Get Enough of the Stock Market - The Wall Street Journal',
+        description:
+          'Households increased stockholdings to 41% of their total financial assets in April',
+        url:
+          'https://www.wsj.com/articles/americans-cant-get-enough-of-the-stock-market-11619947800',
+        urlToImage: 'https://images.wsj.net/im-332502/social',
+        publishedAt: '2021-05-02T09:30:00Z',
+        content:
+          'Americans are all in on the stock market.Individual investors are holding more stocks than ever before as major indexes climb to fresh highs. They are also upping the ante by borrowing to magnify the… [+5863 chars]',
+      },
+      {
+        source: {
+          id: null,
+          name: 'NOLA.com',
+        },
+        author: 'RAMON ANTONIO VARGAS | Staff writer',
+        title:
+          'Eight shot, including two killed, in two separate overnight shootings in New Orleans - NOLA.com',
+        description:
+          'A total of eight people were shot, including two who were killed, in two separate shootings overnight Saturday, according to the New Orleans Police Department.',
+        url:
+          'https://www.nola.com/news/crime_police/article_3d65ae5e-ab26-11eb-9dcd-e71dff1511b1.html',
+        urlToImage:
+          'https://bloximages.newyork1.vip.townnews.com/nola.com/content/tncms/assets/v3/editorial/5/dc/5dcbecee-736e-57d0-80f9-866b6c8aec67/608ea95ea1660.image.jpg?resize=813%2C630',
+        publishedAt: '2021-05-02T09:17:00Z',
+        content:
+          'A total of eight people were shot, including two who were killed, in two separate shootings overnight Saturday, according to the New Orleans Police Department.\r\nTwo people were slain and four more we… [+1813 chars]',
+      },
+      {
+        source: {
+          id: 'business-insider',
+          name: 'Business Insider',
+        },
+        author: 'Tom Porter',
+        title:
+          "Mitt Romney loudly booed and called a 'traitor' at Utah's GOP conference over his opposition to Trump - Business Insider",
+        description:
+          'Video shows Republican state delegates shouting "communist" and "traitor" at Romney as he tried to address a Utah GOP conference.',
+        url:
+          'https://www.businessinsider.com/watch-traitor-mitt-romney-booed-by-trump-fans-at-utah-gop-conference-2021-5',
+        urlToImage:
+          'https://i.insider.com/608e64e034af8d001859a72a?width=1200&format=jpeg',
+        publishedAt: '2021-05-02T09:12:44Z',
+        content:
+          'Utah Sen. Mitt Romney was loudly booed when he took to the stage at a state Republican Party conference Saturday, according to a video published by the Salt Lake Tribune. \r\nIn the footage, the delega… [+1938 chars]',
+      },
+      {
+        source: {
+          id: null,
+          name: 'Yahoo Entertainment',
+        },
+        author: 'Kevin Iole',
+        title:
+          'Andy Ruiz Jr., Eddy Reynoso a winning combination as ex-champ outpoints Chris Arreola - Yahoo Sports',
+        description:
+          'Yahoo Sports had it 115-112 for Ruiz, who won for the first time since that magical night in New York nearly two years ago when he stopped Joshua in a...',
+        url:
+          'https://sports.yahoo.com/andy-ruiz-jr-eddy-reynoso-a-winning-combination-as-ex-champ-outpoints-chris-arreola-080743888.html',
+        urlToImage:
+          'https://s.yimg.com/ny/api/res/1.2/snwrUIOzOK1D.96JyfwaaQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTIwMDA7aD0xNTgz/https://s.yimg.com/os/creatr-uploaded-images/2021-05/5ca99130-ab1d-11eb-bdbf-21bca139b3c1',
+        publishedAt: '2021-05-02T08:07:43Z',
+        content:
+          'Richard Parker was a self-described naturalist. Then an anonymous tip led investigators to a scene of carnageThis article contains animal images some viewers may find distressing Wildlife officials w… [+18499 chars]',
+      },
+      {
+        source: {
+          id: null,
+          name: 'NPR',
+        },
+        author: null,
+        title: 'Republican Susan Wright Makes U.S. House Runoff In Texas - NPR',
+        description:
+          "It's too early to call who she will face in the runoff election. Wright is the widow of Rep. Ron Wright, who died in February after contracting COVID-19.",
+        url:
+          'https://www.npr.org/2021/05/02/992825646/republican-susan-wright-makes-u-s-house-runoff-in-texas',
+        urlToImage:
+          'https://media.npr.org/assets/img/2021/05/02/ap21117812255483_wide-039f78a4ce1909af3d898dd1c4e1f5c9538d4d54.jpg?s=1400',
+        publishedAt: '2021-05-02T07:17:38Z',
+        content:
+          'Volunteer Al Green looks at his phone as he takes a break from holding a sign supporting his candidate in a local election outside an early voting location Tuesday, April 27, 2021, in Mansfield, Texa… [+2107 chars]',
+      },
+    ];
+  },
+};
+</script>
