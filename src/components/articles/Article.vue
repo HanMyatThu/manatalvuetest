@@ -7,9 +7,14 @@
   >
     <v-row class="mx-1 content" max-width="400" min-height="400">
       <v-spacer></v-spacer>
-      <v-icon medium class="icon">
-        mdi-arrow-right
-      </v-icon>
+      <router-link
+        v-if="article.source.id"
+        :to="{ name: 'articles-details', params: { id: article.source.id } }"
+      >
+        <v-icon medium class="icon">
+          mdi-arrow-right
+        </v-icon>
+      </router-link>
       <v-card-text class="date">
         {{ getDateString(new Date(article.publishedAt)) }}
       </v-card-text>
@@ -31,6 +36,7 @@ export default {
   props: {
     article: {},
   },
+
   methods: {
     getDateString(date) {
       var mm = date.getMonth() + 1; // getMonth() is zero-based

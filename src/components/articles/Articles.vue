@@ -9,23 +9,27 @@
       :key="article.id"
       v-for="article in articles"
     >
-      <Article :article="article" />
+      <Article :article="article"></Article>
     </v-col>
   </v-row>
 </template>
 
 <script>
 import Article from './Article';
+import { mapState } from 'vuex';
 
 export default {
   name: 'Articles',
-  props: {
-    articles: {
-      type: Array,
-    },
-  },
   components: {
     Article,
+  },
+  computed: {
+    ...mapState({
+      articles: state => state.articles.articles,
+    }),
+  },
+  data() {
+    return {};
   },
 };
 </script>
