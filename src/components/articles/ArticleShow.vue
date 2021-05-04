@@ -7,7 +7,7 @@
       <v-card class="mx-auto my-12">
         <v-img height="auto" :src="article.urlToImage"></v-img>
 
-        <v-card-title>{{ article.source.name }}</v-card-title>
+        <v-card-title class="mt-2 mb-3">{{ article.source.name }}</v-card-title>
 
         <v-card-text>
           <v-row align="center" class="mx-0">
@@ -17,7 +17,7 @@
             </div>
             <div class="grey--text mr-2 mb-2">
               <v-icon>mdi-clock-outline</v-icon>
-              {{ article.publishedAt }}
+              {{ getDateString(new Date(article.publishedAt)) }}
             </div>
           </v-row>
 
@@ -46,6 +46,39 @@ export default {
   name: 'ArticleShow',
   props: {
     article: {},
+  },
+  data() {
+    return {
+      items: [
+        {
+          text: 'Dashboard',
+          disabled: false,
+          href: 'breadcrumbs_dashboard',
+        },
+        {
+          text: 'Link 1',
+          disabled: false,
+          href: 'breadcrumbs_link_1',
+        },
+        {
+          text: 'Link 2',
+          disabled: true,
+          href: 'breadcrumbs_link_2',
+        },
+      ],
+    };
+  },
+  methods: {
+    getDateString(date) {
+      var mm = date.getMonth() + 1; // getMonth() is zero-based
+      var dd = date.getDate();
+
+      return [
+        date.getFullYear(),
+        (mm > 9 ? '' : '0') + mm,
+        (dd > 9 ? '' : '0') + dd,
+      ].join('.');
+    },
   },
 };
 </script>

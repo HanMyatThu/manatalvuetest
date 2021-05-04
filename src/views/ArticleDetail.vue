@@ -17,7 +17,10 @@ export default {
     article() {
       return (
         this.articles.find(
-          article => article.source.id == this.$route.params.id,
+          article =>
+            article.source.id == this.$route.params.id ||
+            article.source.name.replace(/\s+/g, '-').toLowerCase() ==
+              this.$route.params.id,
         ) || {}
       );
     },
