@@ -1,5 +1,5 @@
 <template>
-  <v-btn elevation="2" medium outlined plain>
+  <v-btn elevation="2" medium outlined plain @click="$emit('toggle-input')">
     Filter
   </v-btn>
 </template>
