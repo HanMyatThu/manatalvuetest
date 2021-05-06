@@ -1,6 +1,10 @@
 <template>
   <v-toolbar>
-    <v-toolbar-title>Article Shark Place</v-toolbar-title>
+    <v-toolbar-title>
+      <router-link to="/">
+        DRAZ
+      </router-link>
+    </v-toolbar-title>
     <v-spacer></v-spacer>
 
     <v-text-field

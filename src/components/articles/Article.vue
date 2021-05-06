@@ -114,6 +114,13 @@ export default {
 .content a i:hover {
   font-size: 30px;
 }
+@media (min-width: 1600px) and (max-width: 1700px) {
+  .content {
+    background: rgba(0, 0, 0, 0.4);
+    height: 100%;
+    min-height: 580px;
+  }
+}
 @media (min-width: 1300px) and (max-width: 1600px) {
   .content {
     background: rgba(0, 0, 0, 0.4);
