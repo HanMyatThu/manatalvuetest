@@ -34,7 +34,7 @@
       <v-card-text
         :class="[article.urlToImage === null ? 'whiteTitle' : 'title']"
       >
-        {{ article.title }}
+        {{ article.title.substring(0, 100) + '...' }}
       </v-card-text>
       <v-card-text class="description">
         {{ article.description }}
@@ -75,7 +75,7 @@ export default {
   color: rgb(18, 246, 216);
 }
 .content {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.5);
   height: 100%;
   min-height: 450px;
 }
@@ -96,7 +96,7 @@ export default {
   line-height: 2em;
 }
 .content .title {
-  color: rgb(44, 238, 228);
+  color: white;
   font-weight: 500;
   font-size: 18px;
   line-height: 2em;
