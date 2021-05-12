@@ -13,7 +13,7 @@ export default {
       state.articles = articles;
       state.titles = [];
       articles.map(article => {
-        state.titles.push(article.title.substring(0, 70));
+        state.titles.push(article.title.substring(0, 80));
       });
     },
     SEARCH_ARTICLES(state, articles) {
@@ -21,13 +21,26 @@ export default {
       state.articles = articles;
       state.titles = [];
       articles.map(article => {
-        state.titles.push(article.title.substring(0, 70));
+        state.titles.push(article.title.substring(0, 80));
       });
     },
     FILTER_ARTICLES(state, articles) {
       state.articles = articles;
     },
     RESET_FILTER(state, articles) {
+      state.articles = articles;
+    },
+    FILTER_WITH_COUNTRY(state, articles) {
+      articles.length === 0
+        ? (state.persistantArticles = state.persistantArticles)
+        : (state.persistantArticles = articles);
+      state.articles = articles;
+      state.titles = [];
+      articles.map(article => {
+        state.titles.push(article.title.substring(0, 80));
+      });
+    },
+    FILTER_WITH_SOURCE(state, articles) {
       state.articles = articles;
     },
   },
@@ -51,7 +64,7 @@ export default {
     async filterArticles({ commit, state }, { filterText }) {
       let articles = state.persistantArticles;
       console.log(filterText);
-      if (filterText.length > 1) {
+      if (filterText) {
         articles = articles.filter(article => {
           return article.title
             .trim()
@@ -68,6 +81,27 @@ export default {
     },
     async resetFilter({ commit, state }) {
       commit('RESET_FILTER', state.persistantArticles);
+    },
+    async filterArticlesByCountry({ commit, state }, { country }) {
+      if (country) {
+        let { data } = await Api().get(
+          `top-headlines?country=${country}&apiKey=099148be22804e849a0c6fe022b7cf5e`,
+        );
+        let articles = data.articles;
+        commit('FILTER_WITH_COUNTRY', articles);
+      } else {
+        commit('FILTER_WITH_COUNTRY', state.persistantArticles);
+      }
+    },
+    async filterArticlesBySource({ commit, state }, { source }) {
+      if (source) {
+        let articles = state.articles;
+        articles = articles.filter(article => article.source.name === source);
+        commit('FILTER_WITH_SOURCE', articles);
+      } else {
+        let articles = state.persistantArticles;
+        commit('FILTER_WITH_SOURCE', articles);
+      }
     },
   },
 };

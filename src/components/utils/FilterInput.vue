@@ -10,6 +10,7 @@
         dense
         default=""
         :items="titles"
+        clearable
         single-line
         append-icon="mdi-magnify"
         class="shrink mx-4"
@@ -26,12 +27,14 @@
         filled
         rounded
         dense
+        default=""
         :items="countries"
         single-line
         append-icon="mdi-magnify"
         class="shrink mx-4"
+        clearable
         v-model="country"
-        @keydown.enter="FilterArticles"
+        @keydown.enter="filterArticlesByCountry"
       >
       </v-autocomplete>
     </v-col>
@@ -44,11 +47,13 @@
         rounded
         dense
         single-line
+        default=""
+        clearable
         :items="sourceNames"
         append-icon="mdi-magnify"
         class="shrink mx-4"
         v-model="source"
-        @keydown.enter="FilterArticles"
+        @keydown.enter="filterArticlesBySource"
       >
       </v-autocomplete>
     </v-col>
@@ -77,15 +82,15 @@ export default {
   data() {
     return {
       articleTitle: '',
-      country: '',
-      source: '',
+      country: null,
+      source: null,
     };
   },
 
   methods: {
     FilterArticles() {
       this.$store.dispatch('articles/filterArticles', {
-        filterText: this.articleTitle.trim(),
+        filterText: this.articleTitle,
       });
     },
     reset() {
@@ -94,6 +99,17 @@ export default {
       this.source = '';
 
       this.$store.dispatch('articles/resetFilter');
+    },
+    filterArticlesBySource() {
+      this.$store.dispatch('articles/filterArticlesBySource', {
+        source: this.source,
+      });
+    },
+    filterArticlesByCountry() {
+      this.$store.dispatch('articles/filterArticlesByCountry', {
+        country: this.country,
+      });
+      this.$emit('head-line-title', this.country);
     },
   },
 };

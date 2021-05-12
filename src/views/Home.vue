@@ -2,16 +2,15 @@
   <v-container class="mt-10">
     <v-row no-gutters>
       <v-col sm="5" md="6">
-        <h2 class="mx-2">Latest News</h2>
+        <h2 class="mx-2">Latest News in {{ headlineRegion.toUpperCase() }}</h2>
       </v-col>
       <v-col sm="5" offset-sm="2" md="6" offset-md="0" class="text-right">
         <Button @toggle-input="toggleFilterForm()" />
       </v-col>
     </v-row>
     <div v-if="toggleForm">
-      <FilterInput />
+      <FilterInput @head-line-title="headline" />
     </div>
-
     <Articles />
   </v-container>
 </template>
@@ -37,11 +36,15 @@ export default {
   data() {
     return {
       toggleForm: false,
+      headlineRegion: 'US',
     };
   },
   methods: {
     toggleFilterForm() {
       this.toggleForm = !this.toggleForm;
+    },
+    headline(value) {
+      this.headlineRegion = value;
     },
   },
 };

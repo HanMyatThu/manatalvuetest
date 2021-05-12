@@ -17,12 +17,6 @@ export default {
         state.countries.push(source.country);
       });
     },
-    // SEARCH_ARTICLES(state, sources) {
-    //   state.sources = sources;
-    // },
-    // FILTER_ARTICLES(state, sources) {
-    //   state.sources = sources;
-    // },
   },
   actions: {
     async fetchSources({ commit, dispatch }) {
@@ -32,31 +26,5 @@ export default {
       let sources = data.sources;
       commit('SET_SOURCES', sources);
     },
-    // async searchArticles({ commit }, text) {
-    //   let { data } = await Api().get(
-    //     `?q=${text.text}&apiKey=099148be22804e849a0c6fe022b7cf5e`,
-    //   );
-
-    //   data.articles.length === 0
-    //     ? commit('SEARCH_ARTICLES', [...this.articles])
-    //     : commit('SEARCH_ARTICLES', data.articles);
-    // },
-    // async filterArticles({ commit, state }, { filterText }) {
-    //   let articles = state.articles;
-    //   if (filterText.length > 1) {
-    //     articles = articles.filter(article => {
-    //       return article.title
-    //         .trim()
-    //         .toLowerCase()
-    //         .includes(filterText.trim().toLowerCase());
-    //     });
-    //     if (articles.length < 1) {
-    //       commit('FILTER_ARTICLES', state.articles);
-    //     }
-    //     commit('FILTER_ARTICLES', articles);
-    //   }
-
-    //   commit('FILTER_ARTICLES', articles);
-    // },
   },
 };
