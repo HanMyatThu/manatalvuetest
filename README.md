@@ -4,7 +4,11 @@ I've done the test project for Vuejs. I used Vuex, Vue-router and other vuejs es
 
 ## Tips
 
-Press Enter in either search field or filter field to search
+Press Enter in either search field or filter field to search.
+
+For Filtering, if there is no article after you put data in text field, just remove and press enter . Existing persistance articles in state will came out.
+
+You can filter with three fields, Title, country & source. 
 
 ## Project setup
 
