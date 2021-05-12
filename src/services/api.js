@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export default () => {
   return axios.create({
-    baseURL: 'https://newsapi.org/v2/top-headlines',
+    baseURL: 'https://newsapi.org/v2/',
     withCredentials: false,
     headers: {
       Accept: 'application/json',

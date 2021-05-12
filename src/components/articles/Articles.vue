@@ -1,6 +1,10 @@
 <template>
   <v-row no-gutters class="mt-10">
+    <div v-if="articles.length === 0" class="mt-30">
+      <h1 class="text-center">There is no article</h1>
+    </div>
     <v-col
+      v-else
       cols="12"
       sm="4"
       md="3"

@@ -11,6 +11,7 @@
     <div v-if="toggleForm">
       <FilterInput />
     </div>
+
     <Articles />
   </v-container>
 </template>
@@ -19,6 +20,7 @@
 import Button from '../components/utils/Button';
 import Articles from '../components/articles/Articles';
 import FilterInput from '../components/utils/FilterInput';
+import Sources from '../components/sources/Sources';
 
 export default {
   name: 'Home',
@@ -26,9 +28,11 @@ export default {
     Button,
     Articles,
     FilterInput,
+    Sources,
   },
   created() {
     this.$store.dispatch('articles/loadArticles');
+    this.$store.dispatch('sources/fetchSources');
   },
   data() {
     return {
